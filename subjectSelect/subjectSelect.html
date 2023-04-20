@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Subjects</title>
+	<link rel="stylesheet" href="./subjectSelect.css">
+
+</head>
+
+<body>
+
+	<body>
+		<h1 id="head"></h1>
+		<div id="submit">
+			<form action="/store">
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>:</th>
+						<td id="Name_show"></td>
+					</tr>
+					<tr>
+						<th>Roll No</th>
+						<th>:</th>
+						<td id="rollNo_show"></td>
+					</tr>
+					<tr>
+						<th>Department</th>
+						<th>:</th>
+						<td id="Department_show"></td>
+					</tr>
+					<tr>
+						<th>Subject:</th>
+						<th>:</th>
+						<td id="subject_show"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Submit"></td>
+						<td></td>
+						<td><button>Cancel</button></td>
+
+					</tr>
+				</table>
+
+				<input type="hidden" name="rollNo" id="rollNo" value="#">
+				<input type="hidden" name="name" id="name" value="#">
+				<input type="hidden" name="department" id="department" value="#">
+				<input type="hidden" name="subject" id="subject" value="">
+
+			</form>
+		</div>
+
+		<div class="subjects-container"></div>
+		<script src="./subjectScript.js"></script>
+		<script>
+
+			const data1 = {
+				"id": 1,
+				"department_name": "Computer Science",
+				"subjects": [
+					{
+						"subject_name": "Python",
+						"Total_count": 20,
+						"count": 10,
+						"description": "This course will teach you Python programming language."
+					},
+					{
+						"subject_name": "Java",
+						"Total_count": 20,
+						"count": 15,
+						"description": "staff:ram contact:1234567890"
+					},
+					{
+						"subject_name": "SQL",
+						"Total_count": 20,
+						"count": 10,
+						"description": `hi`
+					}
+				]
+			};
+
+			const details1 = ["ram", "1234567890", "Computer Science"];
+
+			getSubject(details1, data1);
+		</script>
+
+	</body>
+
+</html>

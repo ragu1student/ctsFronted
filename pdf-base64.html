@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF to Base64 Converter</title>
+</head>
+<body>
+    <input type="file" id="pdfFile" accept="application/pdf">
+    <button id="convertBtn">Convert to Base64</button>
+    <textarea id="base64String" rows="10" cols="50"></textarea>
+    <button id="downloadBtn">Download PDF</button>
+
+    <script>
+        // Convert PDF to base64
+        function pdfToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+//         function base64ToPdf(base64String) {
+//     const linkSource = base64String;
+//     const pdfWindow = window.open("");
+//     pdfWindow.document.write("<iframe width='100%' height='100%' src='" + linkSource + "'></iframe>");
+// }
+
+function base64ToPdf(base64String) {
+    const linkSource = base64String;
+    const iframe = document.createElement('iframe');
+    iframe.src = linkSource;
+    iframe.width = '100%';
+    iframe.height = '100%';
+    document.body.appendChild(iframe);
+}
+        // Convert base64 to PDF
+        // function base64ToPdf(base64String) {
+        //     const linkSource = base64String;
+        //     const downloadLink = document.createElement("a");
+        //     const fileName = "converted.pdf";
+
+        //     downloadLink.href = linkSource;
+        //     downloadLink.click();
+        // }
+
+        const pdfFileInput = document.querySelector('#pdfFile');
+        const convertBtn = document.querySelector('#convertBtn');
+        const base64StringTextarea = document.querySelector('#base64String');
+        const downloadBtn = document.querySelector('#downloadBtn');
+
+        convertBtn.addEventListener('click', async () => {
+            const file = pdfFileInput.files[0];
+            if (file) {
+                const base64String = await pdfToBase64(file);
+                base64StringTextarea.value = base64String;
+            }
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const base64String = base64StringTextarea.value;
+            if (base64String) {
+                base64ToPdf(base64String);
+            }
+        });
+    </script>
+</body>
+</html>
