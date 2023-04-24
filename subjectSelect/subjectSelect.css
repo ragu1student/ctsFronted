@@ -33,18 +33,20 @@ h1 {
 
 .subject-card p {
   font-size: 16px;
-  color: #666;
+  color: rgb(56, 36, 36);
   line-height: 1.5;
   margin-bottom: 10px;
 }
 
 .subject-card button {
+  padding-left: 20%;
   background-color: #4caf50;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+      margin: inherit;
 }
 
 .subject-card button:hover {
@@ -57,4 +59,12 @@ table{
   border:#333 1px solid;
   border-collapse: collapse;
   border-color: #3e8e41 1px solid;
+}
+
+#submit{
+  display: none;
+
+}
+iframe{
+  display:flexbox;
 }
